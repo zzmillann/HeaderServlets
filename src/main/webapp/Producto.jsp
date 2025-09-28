@@ -1,4 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="es.daw.jakarta.cabezerasapp.model.Producto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% List <Producto> productos = (List<Producto> ) request.getAttribute("listaproductos"); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,6 +18,9 @@
     </style>
 </head>
 <body>
+
+
+
 <h1>Listado de productos</h1>
 <table>
     <thead>
@@ -24,4 +30,21 @@
     <th>PRECIO</th>
     </thead>
     <tbody>
+    <% if (productos != null) { %>
+    <% for ( Producto p  : productos){ %>
+    <tr>
+        <td><%=p.getId()%></td>
+        <td><%=p.getNombre()%></td>
+        <td><%=p.getTipo()%></td>
+        <td><%=p.getPrecio()%></td>
+
+    </tr>
+
+   <% } %>
+<% } %>
+    </tbody>
+</table>
+</body>
+</html>
+
 
